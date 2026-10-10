@@ -193,6 +193,38 @@
   });
 
   /* ---------- nav + year ---------- */
+  /* ---------- nav shadow + scroll reveals + live machine ticker ---------- */
+  var head = document.querySelector(".shophead");
+  addEventListener("scroll", function () {
+    head.classList.toggle("scrolled", scrollY > 12);
+  }, { passive: true });
+
+  var reveal = document.querySelectorAll(".workcard,.pin,.machine,.note,.chalkboard,.orderform,.dropzone,.custom-fields,.hours");
+  reveal.forEach(function (el) { el.classList.add("rv"); });
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12 });
+    reveal.forEach(function (el) { io.observe(el); });
+  } else {
+    reveal.forEach(function (el) { el.classList.add("in"); });
+  }
+
+  // machine progress inches forward while you watch
+  (function () {
+    var pct = 64, bar = $("mBar"), label = $("mPct");
+    if (!bar || !label) return;
+    setInterval(function () {
+      pct = pct >= 97 ? 64 : pct + 1;
+      bar.style.width = pct + "%";
+      var mins = Math.max(5, Math.round((100 - pct) * 2.2));
+      var h = Math.floor(mins / 60), m = mins % 60;
+      label.textContent = pct + "% · about " + (h ? h + "h " + m + "m" : m + "m") + " left";
+    }, 4000);
+  })();
+
   var toggle = $("navToggle"), nav = $("shopnav");
   toggle.addEventListener("click", function () {
     var open = nav.classList.toggle("open");
