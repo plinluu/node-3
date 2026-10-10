@@ -133,6 +133,25 @@ a{color:var(--brick)}
 .hours td:last-child{text-align:right;font-weight:600}
 .hours-note{font-size:.9rem;color:var(--muted)}
 
+/* custom file upload */
+.custom-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:22px;margin-top:30px;align-items:start}
+.dropzone{background:#fff;border:1px solid var(--line);border-radius:4px;padding:28px;box-shadow:4px 4px 0 rgba(36,29,18,.12);cursor:pointer;transition:border-color .15s,background .15s}
+.dropzone:hover,.dropzone.over{border-color:var(--brick);background:#FFFDF7}
+.dz-big{font-family:var(--slab);font-size:1.3rem;margin:6px 0}
+.dz-browse{color:var(--brick);text-decoration:underline;text-underline-offset:3px}
+.dz-fine{font-size:.85rem;color:var(--muted)}
+.filelist{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px}
+.filelist li{display:flex;align-items:center;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:9px 12px;font-size:.88rem}
+.filelist li span{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.filelist li small{color:var(--muted);flex:none}
+.filelist button{flex:none;background:none;border:1px solid var(--line);border-radius:6px;color:var(--brick);font-weight:700;cursor:pointer;padding:3px 9px;font-size:.8rem}
+.custom-fields{background:#fff;border:1px solid var(--line);border-radius:4px;padding:28px;box-shadow:4px 4px 0 rgba(36,29,18,.12)}
+.custom-fields label{display:block;font-weight:600;font-size:.92rem;margin-bottom:12px}
+.custom-fields input,.custom-fields textarea,.custom-fields select{width:100%;font:inherit;font-weight:400;border:2px solid var(--line);border-radius:var(--radius);padding:11px 13px;margin-top:5px;background:#FFFDF7;color:var(--ink)}
+.custom-fields input:focus,.custom-fields textarea:focus,.custom-fields select:focus{outline:3px solid #F0DDBE;border-color:var(--brick)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.honey{position:absolute;left:-9999px;opacity:0;height:0}
+
 /* footer */
 .footer{background:#241D12;color:#CBBFA6;padding:30px 0}
 .foot p{margin:4px 0;font-size:.92rem}
@@ -140,7 +159,7 @@ a{color:var(--brick)}
 .foot-ps{font-family:var(--hand);font-size:1.3rem;color:#F2C879}
 
 @media(max-width:900px){
-  .hero-grid,.board-grid,.visit-grid{grid-template-columns:1fr}
+  .hero-grid,.board-grid,.visit-grid,.custom-grid{grid-template-columns:1fr}
   .work-grid,.cork{grid-template-columns:1fr}
   .shopnav{display:none;position:absolute;top:100%;left:0;right:0;background:var(--paper);flex-direction:column;padding:6px 24px 18px;border-bottom:3px double var(--line)}
   .shopnav a{padding:11px 0;border-top:1px solid var(--line)}

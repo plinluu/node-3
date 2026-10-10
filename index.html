@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>NODE 3 — Austin's Neighborhood 3D Print Shop</title>
-<meta name="description" content="NODE 3 is a family-run 3D print shop on Maker Ave in Austin, TX. Prototypes, replacement parts, and short runs — walk-ins welcome." />
+<title>NODE 3 — Online 3D Print Shop</title>
+<meta name="description" content="NODE 3 is an online 3D printing workshop. Send your files, get a clear quote, and receive finished parts by mail — anywhere in the US." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
@@ -15,9 +15,9 @@
 
 <div class="topbar">
   <div class="wrap topbar-row">
-    <span>214 Maker Ave, Suite 3, Austin, TX</span>
-    <span class="topbar-mid">Open Mon–Sat · 9am–6pm</span>
-    <a href="tel:+15551234567">Call or text: (555) 123-4567</a>
+    <span>Online print shop · ships anywhere in the US</span>
+    <span class="topbar-mid">Most orders out in 2–5 days</span>
+    <a href="mailto:hello@node3prints.com">hello@node3prints.com</a>
   </div>
 </div>
 
@@ -25,15 +25,16 @@
   <div class="wrap shophead-row">
     <a href="#top" class="sign" id="top">
       <span class="sign-badge">N3</span>
-      <span class="sign-text">NODE 3<em>3-D PRINT SHOP · EST. 2021</em></span>
+      <span class="sign-text">NODE 3<em>ONLINE 3-D PRINT SHOP</em></span>
     </a>
     <nav class="shopnav" id="shopnav">
+      <a href="#custom">Send a file</a>
       <a href="#board">Price board</a>
       <a href="#work">What we do</a>
-      <a href="#reviews">Neighbors say</a>
-      <a href="#visit">Find us</a>
+      <a href="#reviews">Customers</a>
+      <a href="#shipping">Shipping</a>
     </nav>
-    <a href="#order" class="btn-call">Get a quote</a>
+    <a href="#custom" class="btn-call">Send us your file</a>
     <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -43,24 +44,24 @@
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <div class="stamp" aria-hidden="true">Austin, TX · local &amp; family-run</div>
-        <h1>The 3-D print shop<br>around the corner.</h1>
-        <p class="standfirst">We're a small South Austin workshop with six printers and a bell on the door. Bring in a broken part, a sketch on a napkin, or just an idea — we'll figure out the rest together.</p>
+        <div class="stamp" aria-hidden="true">Online shop · US-wide shipping</div>
+        <h1>Custom 3D prints,<br>delivered to your door.</h1>
+        <p class="standfirst">Send us your 3D files from anywhere in the country. We check every file by hand, print it on our own machines, and mail you finished parts that fit.</p>
         <div class="hero-cta">
-          <a href="#board" class="btn-brick">See the price board</a>
-          <a href="tel:+15551234567" class="btn-line">(555) 123-4567</a>
+          <a href="#custom" class="btn-brick">Send us your file</a>
+          <a href="#board" class="btn-line">See the price board</a>
         </div>
-        <p class="hand">walk-ins welcome — <span>no appointment needed Tue–Thu</span></p>
+        <p class="hand">no account needed — <span>most quotes back within a day</span></p>
       </div>
       <div class="counter">
         <div class="ticket taped">
-          <p class="ticket-head">On the printers this week</p>
+          <p class="ticket-head">Fresh off the printers</p>
           <ul>
-            <li><b>Cooler hinge</b><span>for Denise · ready Thu</span></li>
-            <li><b>12× board-game trays</b><span>for Marcus' game night · ready Fri</span></li>
-            <li><b>Drone bumper set</b><span>mail-out · ships Fri</span></li>
+            <li><b>Cooler hinge</b><span>replacement part · PETG</span></li>
+            <li><b>12× board-game trays</b><span>small-batch run · PLA</span></li>
+            <li><b>Drone bumper set</b><span>rush job · TPU</span></li>
           </ul>
-          <p class="ticket-foot">Queue moves fast — most jobs out in 2–5 days.</p>
+          <p class="ticket-foot">Every order is test-fit and checked before it ships.</p>
         </div>
         <div class="note taped">
           <p>October special: <b>10% off</b> your first order when you mention this site.</p>
@@ -69,11 +70,50 @@
     </div>
   </section>
 
+  <!-- CUSTOM FILE UPLOAD -->
+  <section class="section" id="custom">
+    <div class="wrap">
+      <h2>Send us your file</h2>
+      <p class="section-sub">Have an STL, OBJ, 3MF, or STEP file — or just photos of what you need? Send it over. We'll check it's printable, quote you a fixed price, and only print when you approve.</p>
+      <form class="custom-grid" id="customForm" novalidate>
+        <div class="dropzone taped" id="dropzone">
+          <p class="ticket-head">Drop your files here</p>
+          <p class="dz-big">Drag &amp; drop, or <span class="dz-browse">browse files</span></p>
+          <p class="dz-fine">STL · OBJ · 3MF · STEP · JPG · PNG — up to 5 files, 20&nbsp;MB each</p>
+          <input type="file" id="fileInput" multiple accept=".stl,.obj,.3mf,.step,.stp,.jpg,.jpeg,.png" hidden>
+          <ul class="filelist" id="fileList"></ul>
+        </div>
+        <div class="custom-fields">
+          <div class="field-row">
+            <label>Your name<input name="name" required autocomplete="name" placeholder="e.g. Sam Delgado"></label>
+            <label>Email<input name="email" type="email" required autocomplete="email" placeholder="you@example.com"></label>
+          </div>
+          <label>What should we make?<textarea name="details" required rows="4" placeholder="e.g. Replacement latch for a cooler lid. The white plastic one snapped — photos attached. Needs to hold up outdoors."></textarea></label>
+          <div class="field-row">
+            <label>Material
+              <select name="material">
+                <option>Not sure — recommend one</option>
+                <option>Everyday (PLA / PETG)</option>
+                <option>Heavy-duty (ABS / Nylon)</option>
+                <option>Specialty (Flex / Resin)</option>
+              </select>
+            </label>
+            <label>Quantity<input name="quantity" type="number" value="1" min="1" max="500" inputmode="numeric"></label>
+          </div>
+          <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn-brick btn-full" type="submit" id="customBtn">Send files for review →</button>
+          <p class="form-msg" id="customMsg" role="status"></p>
+          <p class="form-fine">Free to send, no obligation. We reply within 1 business day with a price and a printability check.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+
   <!-- PRICE BOARD -->
-  <section class="section" id="board">
+  <section class="section section-paper" id="board">
     <div class="wrap">
       <h2>The price board</h2>
-      <p class="section-sub">Same board that's chalked up behind our counter. Pick your size, see your price — then send it in below.</p>
+      <p class="section-sub">Our everyday pricing, same as it ever was. Pick your size, see your price.</p>
       <div class="board-grid">
         <div class="chalkboard">
           <p class="chalk-title">— figure your price —</p>
@@ -99,102 +139,90 @@
           <p class="chalk-fine" id="estNote">S · Everyday · ×1 — 5+ pieces knock 10% off, confirmed in person.</p>
         </div>
         <form class="orderform taped" id="orderForm" novalidate>
-          <p class="ticket-head">Send it to the counter</p>
+          <p class="ticket-head">Request this price</p>
           <label>Your name<input name="name" required autocomplete="name" placeholder="e.g. Sam Delgado"></label>
-          <label>Phone or email<input name="contact" required placeholder="so we can reply with the price"></label>
-          <label>What do you need?<textarea name="what" required rows="4" placeholder="e.g. The little latch on our cooler snapped. About 3 inches, white plastic. Can bring it by Thursday."></textarea></label>
-          <button class="btn-brick btn-full" type="submit" id="sendBtn">Hand it over the counter →</button>
+          <label>Email<input name="contact" type="email" required autocomplete="email" placeholder="so we can reply with the quote"></label>
+          <label>What do you need?<textarea name="what" required rows="4" placeholder="e.g. A replacement hinge, about 3 inches, black plastic, needed by Friday."></textarea></label>
+          <button class="btn-brick btn-full" type="submit" id="sendBtn">Request this print →</button>
           <p class="form-msg" id="formMsg" role="status"></p>
-          <p class="form-fine">Prefer talking? Call <a href="tel:+15551234567">(555) 123-4567</a> — fastest way.</p>
+          <p class="form-fine">No payment now — we confirm the exact price first. Got files? Use the <a href="#custom">file upload</a> above instead.</p>
         </form>
       </div>
     </div>
   </section>
 
   <!-- WHAT WE DO -->
-  <section class="section section-paper" id="work">
+  <section class="section" id="work">
     <div class="wrap">
-      <h2>What folks bring us</h2>
-      <p class="section-sub">Three jobs make up 90% of what leaves this shop.</p>
+      <h2>What folks send us</h2>
+      <p class="section-sub">Three jobs make up 90% of what leaves our printers.</p>
       <div class="work-grid">
         <article class="workcard">
           <p class="work-no">No. 1</p>
           <h3>"They don't make this part anymore"</h3>
-          <p>Appliance knobs, car clips, vacuum bits, shutter dogs. Bring the broken one in a baggie — we measure it and print you a fresh one. <b>Most from $9.</b></p>
+          <p>Appliance knobs, car clips, vacuum bits. Send photos with a ruler for scale — or mail us the broken piece — and we'll model and print a fresh one. <b>Most from $9.</b></p>
         </article>
         <article class="workcard">
           <p class="work-no">No. 2</p>
           <h3>"Can you print a few of these?"</h3>
-          <p>Coaster sets, game pieces, shop jigs, church-fundraiser trinkets. Ten to five hundred at a time, same color, checked by hand. <b>Ask about the 10% quantity break.</b></p>
+          <p>Coaster sets, game pieces, shop jigs, fundraiser trinkets. Ten to five hundred at a time, same color, checked by hand. <b>Ask about the 10% quantity break.</b></p>
         </article>
         <article class="workcard">
           <p class="work-no">No. 3</p>
           <h3>"I sketched an invention"</h3>
-          <p>Napkin drawings welcome. We print rough versions cheap so you can hold the idea, then refine it. <b>First-look prints from $12.</b></p>
+          <p>Napkin drawings welcome. We print rough versions cheap so you can hold the idea, then refine it together. <b>First-look prints from $12.</b></p>
         </article>
       </div>
       <div class="machines">
-        <p><b>The fleet:</b> 3 Prusas that never sleep · 1 big-format for helmets &amp; housings · 1 resin machine for tiny detailed work · 1 scanner for copying odd shapes. Filament from US suppliers, dried and stored proper.</p>
+        <p><b>The fleet:</b> 3 workhorse filament printers · 1 big-format for helmets &amp; housings · 1 resin machine for tiny detailed work · 1 scanner for copying odd shapes. Filament from US suppliers, dried and stored proper.</p>
       </div>
     </div>
   </section>
 
   <!-- REVIEWS -->
-  <section class="section" id="reviews">
+  <section class="section section-paper" id="reviews">
     <div class="wrap">
-      <h2>Word around the neighborhood</h2>
-      <p class="section-sub">Pinned to our corkboard, unedited.</p>
+      <h2>Word from customers</h2>
+      <p class="section-sub">Pinned to our board, unedited.</p>
       <div class="cork">
-        <figure class="pin taped"><blockquote>"Dishwasher clip's been discontinued since 2019. These folks had me fixed by Thursday. Saved a service call."</blockquote><figcaption>— Denise R., Brentwood</figcaption></figure>
-        <figure class="pin taped"><blockquote>"Ordered 40 planter markers for the community garden. Every one straight, spelled right, cheap."</blockquote><figcaption>— Rev. Carter, East Austin</figcaption></figure>
-        <figure class="pin taped"><blockquote>"My kid designed a robot arm for the science fair. They printed it twice to get the joint right and only charged once."</blockquote><figcaption>— The Alvarez family, Zilker</figcaption></figure>
+        <figure class="pin taped"><blockquote>"Dishwasher clip's been discontinued since 2019. They had me fixed in under a week, shipped fast. Saved a service call."</blockquote><figcaption>— Denise R. · replacement clip</figcaption></figure>
+        <figure class="pin taped"><blockquote>"Ordered 40 planter markers for our community garden. Every one straight, spelled right, cheap."</blockquote><figcaption>— Rev. Carter · batch order</figcaption></figure>
+        <figure class="pin taped"><blockquote>"My kid designed a robot arm for the science fair. They printed it twice to get the joint right and only charged once."</blockquote><figcaption>— The Alvarez family · prototype</figcaption></figure>
       </div>
-      <p class="section-sub small-note">4.9 average across 210+ Google reviews. Names shared with permission.</p>
+      <p class="section-sub small-note">4.9 average across 210+ reviews. Names shared with permission.</p>
     </div>
   </section>
 
-  <!-- VISIT -->
-  <section class="section section-paper" id="visit">
-    <div class="wrap visit-grid">
-      <div>
-        <h2>Come by the shop</h2>
-        <p class="section-sub">We're in the little brick strip on Maker Ave, between the laundromat and the taco truck. Look for the orange door — can't miss it.</p>
-        <svg class="map" viewBox="0 0 400 240" role="img" aria-label="Simple map to the shop on Maker Ave">
-          <rect width="400" height="240" fill="#EFE7D5"/>
-          <path d="M0 150 H400" stroke="#fff" stroke-width="22"/>
-          <path d="M120 0 V240" stroke="#fff" stroke-width="16"/>
-          <path d="M280 0 V240" stroke="#fff" stroke-width="16"/>
-          <path d="M0 150 H400" stroke="#C9BFA8" stroke-width="2" stroke-dasharray="10 8"/>
-          <text x="14" y="142" font-size="13" font-family="Georgia" fill="#6B5F45">MAKER AVE</text>
-          <text x="128" y="60" font-size="11" font-family="Georgia" fill="#8A7D60" transform="rotate(90 128 60)">S 1st</text>
-          <rect x="150" y="160" width="60" height="34" fill="#B3401F"/>
-          <text x="180" y="182" font-size="12" text-anchor="middle" fill="#FBF6EC" font-family="Georgia">N3 ★</text>
-          <text x="180" y="212" font-size="12" text-anchor="middle" fill="#4A3F2C" font-family="Georgia">you → orange door</text>
-          <text x="60" y="200" font-size="11" fill="#6B5F45" font-family="Georgia">laundromat</text>
-          <text x="300" y="200" font-size="11" fill="#6B5F45" font-family="Georgia">taco truck 🌮</text>
-        </svg>
-      </div>
-      <div class="hours taped">
-        <p class="ticket-head">Hours on the door</p>
-        <table>
-          <tr><td>Mon – Fri</td><td>9am – 6pm</td></tr>
-          <tr><td>Saturday</td><td>9am – 2pm</td></tr>
-          <tr><td>Sunday</td><td>Closed (printers rest)</td></tr>
-        </table>
-        <p class="hours-note">Lunch 12:30–1:15 — knock loud, we're in the back.</p>
-        <p class="hours-note">214 Maker Ave, Suite 3<br><a href="tel:+15551234567">(555) 123-4567</a> · <a href="mailto:hello@node3prints.com">hello@node3prints.com</a></p>
+  <!-- SHIPPING -->
+  <section class="section" id="shipping">
+    <div class="wrap">
+      <h2>Shipping, plain and simple</h2>
+      <p class="section-sub">We pack like it's going to our own family. Because it basically is.</p>
+      <div class="work-grid">
+        <article class="workcard">
+          <p class="work-no">Flat $7</p>
+          <h3>Tracked US shipping</h3>
+          <p>One flat rate anywhere in the country, tracked door to door. Orders over $75 ship free.</p>
+        </article>
+        <article class="workcard">
+          <p class="work-no">2–5 days</p>
+          <h3>Honest turnaround</h3>
+          <p>Standard jobs leave our printers in 2–5 days. Need it in 48 hours? Rush service adds 50%.</p>
+        </article>
+        <article class="workcard">
+          <p class="work-no">Checked twice</p>
+          <h3>Fit guarantee</h3>
+          <p>Every part is test-fit and inspected before it ships. If we approved it and it doesn't fit, we reprint or refund.</p>
+        </article>
       </div>
     </div>
   </section>
-
-  <!-- ORDER anchor target -->
-  <span id="order"></span>
 </main>
 
 <footer class="footer">
   <div class="wrap foot">
-    <p><b>NODE 3 Print Shop</b> · 214 Maker Ave, Suite 3, Austin, TX · © <span id="year"></span></p>
-    <p class="foot-ps">P.S. — If the door's locked during hours, we're elbow-deep in a print. Give it five minutes or call.</p>
+    <p><b>NODE 3 Print Shop</b> · online, shipping across the US · © <span id="year"></span> · <a href="mailto:hello@node3prints.com">hello@node3prints.com</a></p>
+    <p class="foot-ps">P.S. — a human checks every file and every part before anything ships.</p>
   </div>
 </footer>
 
